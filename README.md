@@ -7,9 +7,9 @@ This repository will be used to store project codes and updates throughout the t
 We will be given choices of projects and will select a topic based on our understanding, which will later be updated in this repository. 
 
 ## Technical skills 
-### Python | R Programing | Bash Scripting 
-### Pipeline development with HPC clusters 
-### Knowledge of different bioinformatics tools such as MultiQC, FastQC, STAR, HISAT 2, etc. 
+### > Python | R Programing | Bash Scripting 
+### > Pipeline development with HPC clusters 
+### > Knowledge of different bioinformatics tools such as MultiQC, FastQC, STAR, HISAT 2, etc. 
 
 ## Learning Goals for the Course.
 * This README will evolve throughout the term as your project takes shape. 
