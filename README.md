@@ -1,2 +1,2 @@
-# BINF7700_Capstone_Yash
+# Exploratory Bioinformatics Capstone Project
 This is a capstone project repository. 
