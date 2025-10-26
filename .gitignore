@@ -1,0 +1,191 @@
+# ============================================
+# CAPSTONE PROJECT .gitignore
+# Project: Evolution of Mutation - SAE Detection in 120 Mammals
+# Author: Yash Patel
+# ============================================
+#
+# PURPOSE: This file tells Git which files to IGNORE (not push to GitHub)
+# 
+# STRATEGY: Keep all directory structures visible on GitHub,
+#           but ignore large data files, logs, and binaries inside them
+#
+# SYNTAX GUIDE:
+# - Lines starting with # are comments (ignored by Git)
+# - *.ext means "ignore all files ending with .ext"
+# - folder/ means "ignore entire folder and its contents"
+# - !file means "exception - DO track this file even if it matches ignore pattern"
+# - **/pattern means "match pattern in any subdirectory"
+#
+# ============================================
+
+
+# =====================================
+# LARGE DATA FILES - DO NOT PUSH
+# =====================================
+# WHY: GitHub has 100 MB file size limit and these files are 13+ GB each
+# SOLUTION: Ignore all alignment files, provide download instructions instead
+
+# Ignore MAF files in alignments directory
+data/alignments/*.maf
+data/alignments/*.maf.gz
+
+# Ignore chromosome-specific files (chr1, chr2, chr3, etc.)
+data/alignments/chr*.maf
+data/alignments/chr*.maf.gz
+
+# Ignore any alignment files anywhere in the project
+*.maf
+*.maf.gz
+
+# NOTE: Keep data/alignments/ directory structure by adding README.md there
+
+
+# =====================================
+# LOG FILES - DO NOT PUSH
+# =====================================
+# WHY: Log files are generated during execution and are not needed in repo
+# They can be large and contain system-specific information
+
+# Ignore logs in root logs/ directory
+logs/*.log
+logs/*.err
+logs/*.out
+
+# Ignore logs in scripts/logs/ directory
+scripts/logs/*.log
+scripts/logs/*.err
+scripts/logs/*.out
+
+# Ignore ALL log files anywhere in the project
+*.log
+*.err
+*.out
+
+# NOTE: Keep logs/ directories visible with README files
+
+
+# =====================================
+# SOFTWARE BINARIES - DO NOT PUSH
+# =====================================
+# WHY: Compiled binaries are large, system-specific, and can be rebuilt
+
+# Ignore entire HyPhy directory (users will install HyPhy themselves)
+software/hyphy/
+
+# Ignore Mac metadata folders (created when downloading/extracting on Mac)
+software/fresco/__MACOSX/
+**/__MACOSX/
+
+# Ignore Mac system files
+.DS_Store
+**/.DS_Store
+
+# NOTE: We KEEP software/fresco/fresco_code/ because those are the actual
+#       FRESCo scripts needed for analysis (see EXCEPTIONS section below)
+
+
+# =====================================
+# RESULTS FILES - DO NOT PUSH
+# =====================================
+# WHY: Results can be regenerated from analysis scripts
+# STRATEGY: Ignore large result files but keep summaries and README files
+
+# Ignore large output files in fresco_output/
+results/fresco_output/*.json
+results/fresco_output/*.bed
+results/fresco_output/*.csv
+results/fresco_output/*.txt
+
+# Ignore large files in other result directories
+results/boundaries/*.bed
+results/boundaries/*.csv
+results/comparative/*.csv
+results/comparative/*.tsv
+results/noncoding/*.bed
+results/noncoding/*.txt
+
+# But KEEP summary files and documentation (see EXCEPTIONS below)
+
+
+# =====================================
+# TEMPORARY & CACHE FILES
+# =====================================
+# WHY: These are system-generated temporary files not needed in repo
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Editor backup files
+*.swp
+*.swo
+*~
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
+# R temporary files
+.Rhistory
+.RData
+.Rproj.user
+
+
+# =====================================
+# EXCEPTIONS - FORCE INCLUDE THESE
+# =====================================
+# WHY: Even if patterns above would ignore these, we want to keep them
+# SYNTAX: ! means "exception - track this file"
+
+# Always keep README files (they preserve directory structure)
+!**/README.md
+!README.md
+
+# Always keep documentation
+!docs/
+!docs/**
+
+# Keep summary files in results (small, important)
+!results/**/summary.txt
+!results/**/summary.csv
+!results/**/SUMMARY.md
+
+# Keep all scripts (your actual code - small and important)
+!scripts/**/*.sh
+!scripts/**/*.py
+!scripts/**/*.R
+!scripts/**/*.slurm
+
+# Keep FRESCo source code (your analysis algorithm)
+!software/fresco/fresco_code/
+!software/fresco/fresco_code/**
+
+# Keep environment setup script in root
+!env_setup.sh
+
+# Keep all markdown files (documentation)
+!*.md
+
+
+# =====================================
+# PRESERVING EMPTY DIRECTORIES
+# =====================================
+# GIT NOTE: Git doesn't track empty directories
+# SOLUTION: Add README.md files to empty directories (already included above)
+#
+# Make sure each of these directories has a README.md:
+# - data/alignments/
+# - data/annotations/
+# - data/reference/
+# - logs/
+# - scripts/logs/
+# - results/fresco_output/
+# - results/boundaries/
+# - results/comparative/
+# - results/noncoding/
+# - figures/
+# - software/
+
