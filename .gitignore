@@ -73,6 +73,9 @@ scripts/logs/*.out
 software/hyphy/
 
 # Ignore Mac metadata folders (created when downloading/extracting on Mac)
+software/fresco/fresco_code/
+software/fresco/fresco_code/**
+
 software/fresco/__MACOSX/
 **/__MACOSX/
 
@@ -158,13 +161,6 @@ __pycache__/
 !scripts/**/*.py
 !scripts/**/*.R
 !scripts/**/*.slurm
-
-# Keep FRESCo source code (your analysis algorithm)
-!software/fresco/fresco_code/
-!software/fresco/fresco_code/**
-
-# Keep environment setup script in root
-!env_setup.sh
 
 # Keep all markdown files (documentation)
 !*.md
