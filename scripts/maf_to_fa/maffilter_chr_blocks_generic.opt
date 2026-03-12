@@ -1,0 +1,29 @@
+// Generic options file for per-chromosome blocks
+
+// DATA will be overridden from the command line
+DATA=chr1
+
+// Input MAF
+input.file=/home/patel.yashm/capstone_project/data/alignments/$(DATA).maf.gz
+input.file.compression=gzip
+input.format=Maf
+input.dots=as_gaps
+input.check_sequence_size=1
+
+// Log file
+output.log=/home/patel.yashm/capstone_project/scripts/logs/maffilter_$(DATA)_blocks.log
+
+// Filters
+maf.filter=\
+    ExtractFeature(ref_species=hg38, \
+                   feature.file=/home/patel.yashm/capstone_project/data/annotations/CCDS_hg38_one_id_per_gene.gtf, \
+                   feature.file.compression=none, \
+                   feature.format=GTF, \
+                   feature.type=CDS, \
+                   complete=no, \
+                   ignore_strand=no),\
+    OutputAlignments(file=/home/patel.yashm/capstone_project/data/alignments/$(DATA)/$(DATA)_blocks/$(DATA)_blocks_%i.fa, \
+                     format=Fasta, \
+                     coordinates=yes, \
+                     compression=none)
+
